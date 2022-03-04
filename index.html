@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="https://eduardotkoller.github.io/convForm/dist/jquery.convform.css">
+  <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://eduardotkoller.github.io/convForm/dist/jquery.convform.js"></script>
+  <script src="https://eduardotkoller.github.io/convForm/dist//autosize.min.js"></script>
+
+  <style>
+    .btn-big {
+      width: 200px;
+    }
+
+    .btn-small {
+      width: 95px;
+    }
+
+    .last {
+      margin-right: 0 !important;
+    }
+
+    .red {
+      background: #df0024;
+    }
+
+    .blue {
+      background: #00a9ec;
+    }
+
+    .orange {
+      background: #ff9000;
+    }
+
+    .green {
+      background: #0e5d30;
+    }
+
+    div[class^="btn"] {
+      float: left;
+      margin: 0 10px 10px 0;
+      height: 95px;
+      position: relative;
+      cursor: pointer;
+      transition: all .4s ease;
+      user-drag: element;
+      border: solid 2px transparent;
+      text-align: center;
+      line-height: 100px;
+      color: white;
+      box-shadow: 3px 5px 3px grey;
+    }
+
+    .bottom {
+      bottom: 5px;
+    }
+
+    .label {
+      position: absolute;
+      color: white;
+      font: 500 12px sans-serif;
+      left: 10px;
+      user-select: none;
+    }
+
+    div.conv-form-wrapper div#messages div.message {
+      border-radius: 20px;
+      padding: 12px 22px;
+      font-size: 1.905rem;
+      color: #333;
+      display: inline-block;
+      padding: 10px 15px 8px;
+      border-radius: 20px;
+      margin-bottom: 5px;
+      float: right;
+      clear: both;
+      max-width: 65%;
+      word-wrap: break-word;
+    }
+
+    div.conv-form-wrapper div.options div.option {
+      padding: 7px 12px;
+      border: 1px solid rgba(6, 153, 184, 0.3);
+      display: inline-block;
+      margin: 5px;
+      background: #fff;
+      color: #06c5a6;
+      cursor: pointer;
+      border-radius: 20px;
+      font-size: 1.5rem;
+    }
+
+    div.wrapper-messages {
+      background-image: url(https://static.vecteezy.com/system/resources/previews/000/527/742/original/abstract-geometric-form-seamless-pattern-chaotic-flow-background-vector.jpg);
+      background-size: cover;
+    }
+
+    div.conv-form-wrapper div#messages div.message.to {
+      background: white;
+      color: black;
+      float: left;
+      border-top-left-radius: 0;
+    }
+
+    form.convFormDynamic textarea.userInputDynamic {
+      border: none;
+      padding: 7px 10px;
+      outline: none;
+      font-size: 1.505rem;
+      float: left;
+      width: calc(100% - 70px);
+      line-height: 1.3em;
+      min-height: 1.7em;
+      max-height: 10rem;
+      display: block;
+      max-width: 88%;
+      margin-right: 2.5%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row" style="height: 120px;margin-top: 10px;margin-bottom:15px;">
+      <div class="col-sm-2"><img src="https://th.bing.com/th/id/OIP.cRJGCNTn5pJJpKW0sWEDoQHaHa?w=196&amp;h=196&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7" style="height: 120px;"></div>
+      <div class="col-sm-10" style="height: 120px;background-color:#2490ad;color:white;"><h3>Interactive Application Submitter Bot</h3></div>
+    </div>
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+      <li><a id="previewform" data-toggle="tab" href="#previewtab">Preview Form</a></li>
+      <!--
+      <li><a data-toggle="tab" href="#scantab">Scanned Form</a></li>
+      <li><a data-toggle="tab" href="#uploadtab">Uploaded Form</a></li>
+      -->
+    </ul>
+    <br>
+    <p><strong> </strong></p>
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+        <h3>HOME</h3>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="wrap">
+              <div id="interact" class="btn-big red">
+                <i class="fa fa-comment fa-3x"></i>
+                <span class="label bottom">Interactive Forms</span>
+              </div>
+
+              <div class="btn-big blue">
+                <i class="fa fa-camera fa-3x"></i>
+                <span class="label bottom">Scan Form</span>
+              </div>
+              <!--
+              <div class="btn-small orange">
+                <i class="fa fa-windows fa-2x"></i>
+                <span class="label bottom">Store</span>
+              </div>
+        
+              <div class="btn-big blue">
+                <i class="fa fa-user fa-2x"></i>
+                <span class="label bottom">User</span>
+              </div>
+        
+              <div class="btn-small green last">
+                <i class="fa fa-umbrella fa-2x"></i>
+                <span class="label bottom">Application</span>
+              </div>
+            -->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="chat" class="conv-form-wrapper" style="margin-top: ;">
+              <form action="" method="GET" class="hidden">
+                <select data-conv-question="Hello! I'm FoBot..you're personal bot assistant to help with your application forms!! Would you like to start the interactive experience?" name="first-question">
+                  <option value="yes">Yes</option>
+                  <option value="no">No!</option>
+                </select>
+                <div data-conv-fork="first-question">
+                  <div data-conv-case="yes">
+                    <input type="text" data-conv-question="Cool! Let's get started." data-no-answer="true">
+                    <input type="text" data-conv-question="First! Let's authenticate you." data-no-answer="true">
+                    <select data-conv-question="Login using your credentials or Register" name="authenication">
+                      <option data-callback="Login_Form" value="login">Login</option>
+                      <option data-callback="Register_Form" value="register">Register</option>
+                    </select>
+                    <input type="text" data-conv-question="I will help you fill the application form.Please answer the following questions." data-no-answer="true">
+                    <select data-conv-question="Choose the type of Application Form you want to fill" name="formtype">
+                      <option value="admission">Admission</option>
+                      <option value="exam">Exam</option>
+                    </select>
+                    <div data-conv-fork="formtype">
+                      <div data-conv-case="admission">
+                        <input type="text" data-conv-question="Okay.Let's get you started with the application form" data-no-answer="true">
+                        <input type="text" name="applicant_name" data-conv-question="Please enter your name." data-no-answer="">
+                        <input type="text" data-conv-question="Howdy, {applicant_name}:0! " data-no-answer="true">
+                        <input type="text" name="applicant_dob" data-conv-question="Please enter your date of birth" data-no-answer="">
+                        <input type="text" name="applicant_email" data-conv-question="Please enter your Email ID" data-no-answer="" data-pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+                        <input type="text" name="applicant_contact" data-conv-question="Please enter your contact number" data-no-answer="">
+                        <select data-conv-question="Please select your board" name="applicant_board">
+                          <option value="ICSE">ICSE</option>
+                          <option value="CBSE">CBSE</option>
+                          <option value="SSLC">SSLC</option>
+                        </select>
+                        <input type="text" name="applicant_marks_1" data-conv-question="Please enter your marks in 10th" data-no-answer="">
+                        <input type="text" name="applicant_marks_2" data-conv-question="Please enter your marks in 12th" data-no-answer=""> 
+                        <select type="text" name="applicant_image" data-conv-question="Please share your a photo" data-no-answer="">
+                          <option data-callback="Choose_Photo" value="Choose_photo">Choose a photo</option>
+                          <option data-callback="Take_Photo" value="Take_photo">Take a photo</option>
+                        </select>
+                      </div>
+                      <div data-conv-case="exam">
+                        <input type="text" data-conv-question="Okay.Let's get you started with the examination form" data-no-answer="true">
+                        <input type="text" name="exam_name" data-conv-question="Please enter your name." data-no-answer="">
+                        <input type="text" data-conv-question="Howdy, {exam_name}:0! " data-no-answer="true">
+                        <input type="text" name="exam_email" data-conv-question="Please enter your Email ID" data-no-answer="">
+                        <input type="text" name="exam_contact" data-conv-question="Please enter your contact number" data-no-answer="">
+                        <input type="text" name="exam_course" data-conv-question="Please enter your course" data-no-answer="">
+                        <input type="text" name="exam_section" data-conv-question="Please enter your section" data-no-answer="">
+                        <input type="text" name="exam_rollnumber" data-conv-question="Please enter your roll number" data-no-answer="">
+                      </div>
+                    </div>
+                    <input name="preview" type="text" data-conv-question="Alright! Thankyou for your inputs." data-no-answer="true">
+                    <input name="preview" type="text" data-conv-question="You can preview your form and submit" data-no-answer="true">
+                    <select data-conv-question="Please select if you would like to preview or submit your form" name="applicant_action">
+                      <option data-callback="Preview_Form" value="preview">Preview</option>
+                      <option data-callback="Submit_Form" value="submit">Submit</option>
+                    </select>                    
+                  </div>
+                  <div data-conv-case="no">
+                    <input name="bye" type="text" data-conv-question="Alright! You can interact with me anytime again." data-no-answer="true">
+                    <input name="bye" type="text" data-conv-question="Bye for now:)" data-no-answer="true">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12"></div>
+        </div>
+
+        <!-- Login Dialog Modal -->
+        <div class="modal fade" id="login_Modal" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Enter Your Credentials</h4> 
+              </div>
+              <div class="modal-body">
+                <label for="uID">User Name:</label>
+                <input id="uID" name="uID" required>
+                <label for="uPWD">Password:</label>
+                <input id="uPWD" name="uPWD" type="password"> 
+              </div>
+              <div class="modal-footer">
+                <button id="loginUserBtn" type="button" class="btn btn-default" data-dismiss="modal">Login</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Trigger Login Dialog Modal with a button -->
+        <button id="login_ModalButton" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#login_Modal" style="display:none;">Choose Photo</button>
+
+        <!-- Register Dialog Modal -->
+        <div class="modal fade" id="register_Modal" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Register for FoBot</h4> 
+              </div>
+              <div class="modal-body">
+                <label for="register_uID">User Name:</label>
+                <input id="register_uID" name="register_uID" required>
+                <label for="register_uPWD">Password:</label>
+                <input id="register_uPWD" name="register_uPWD" type="password">
+                <label for="register_uPWD2">Confirm Password:</label>
+                <input id="register_uPWD2" name="register_uPWD2" type="password"> 
+              </div>
+              <div class="modal-footer">
+                <button id="registerUserBtn" type="button" class="btn btn-default" data-dismiss="modal">Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Trigger Register Dialog Modal with a button -->
+        <button id="register_ModalButton" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#register_Modal" style="display:none;">Register User</button>
+
+
+        <!-- Choose a Photo Modal -->
+        <div class="modal fade" id="Choose_Photo_Modal" role="dialog">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Choose your passport size photo</h4> 
+              </div>
+              <div class="modal-body">
+                <label for="myPhoto">Select a Photo:</label>
+                <input type="file" id="myPhoto" name="myPhoto" onchange="loadPhoto(event)"> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Trigger Choose a Photo Modal with a button -->
+        <button id="Choose_PhotoButton" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Choose_Photo_Modal" style="display:none;">Choose Photo</button>
+
+      </div>
+      <div id="previewtab" class="tab-pane fade">
+        <h3>Preview Form</h3>
+        <form id="formName_application" action="" style="display: none;">
+          <div class="container">
+            <h1>Application</h1>
+            <p>Please review this form.</p>
+            <hr>
+            <div class="row">
+              <div class="col-sm-2">
+                <label for="applicant_name"><b>Name</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter your name" name="applicant_name" id="applicant_name" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="applicant_dob"><b>Date of birth</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter your date of birth" name="applicant_dob" id="applicant_dob" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="applicant_email"><b>Email</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter Email" name="applicant_email" id="applicant_email" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="applicant_contact"><b>Contact number</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter your contact number" name="applicant_contact" id="applicant_contact" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="applicant_marks_1"><b>Marks in 10th</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter your marks in 10th" name="applicant_marks_1" id="applicant_marks_1" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="applicant_marks_2"><b>Marks in 12th</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter your marks in 12th" name="applicant_marks_2" id="applicant_marks_2" required>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="applicant_contact"><b>Board name</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter your educational board" name="applicant_board" id="applicant_board" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="applicant_image"><b>Applicant Photo</b></label>
+              </div>
+              <div class="col-sm-2" style="margin-top: 10px;">
+                <img id="applicant_image" width="180" /></p>
+              </div>
+            </div>
+            <hr>
+            <button id="formsubmitApplication" type="submit" class="submitbtn">Submit Form</button>
+          </div>
+
+          <div class="container signin">
+            <p>Already have an account? <a href="#">Sign in</a>.</p>
+          </div>
+        </form>
+        <form id="formName_exam" action="" style="display: none;">
+          <div class="container">
+            <h1 >Exam</h1>
+            <p>Please review this form.</p>
+            <hr>
+            <div class="row">
+              <div class="col-sm-2">
+                <label for="exam_name"><b>Name</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter your name" name="exam_name" id="exam_name" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="exam_email"><b>Email</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter Email" name="exam_email" id="exam_email" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="exam_contact"><b>Contact number</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter your contact number" name="exam_contact" id="exam_contact" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="exam_course"><b>Course name</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter your course" name="exam_course" id="exam_course" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="exam_section"><b>Section</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter your section" name="exam_section" id="exam_section" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2">
+              <label for="exam_rollnumber"><b>Roll number</b></label>
+              </div>
+              <div class="col-sm-2">
+              <input type="text" placeholder="Enter your roll number" name="exam_rollnumber" id="exam_rollnumber" required>
+              </div>
+            </div>
+
+            <hr>
+            <button id="formsubmitExam" type="submit" class="submitbtn">Submit Form</button>
+          </div>
+
+          <div class="container signin">
+            <p>Already have an account? <a href="#">Sign in</a>.</p>
+          </div>
+        </form>        
+      </div>
+      <div id="scantab" class="tab-pane fade">
+        <h3>Scanned Form </h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+          aperiam.</p>
+      </div>
+      <div id="uploadtab" class="tab-pane fade">
+        <h3>Uploaded Form </h3>
+        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+<script>
+  var chatCallback;
+  var chatHTML = '';
+  $(document).ready(function () {
+    //alert("Ready");
+    chatHTML = $('#chat').html();
+  });
+
+  $("#interact").click(function () {
+    //alert("The pic was clicked.");
+    $('#chat').html(chatHTML);
+    convForm = $('#chat').convform({ selectInputStyle: 'disable' });
+  });
+
+  function Preview_Form(stateWrapper,ready) {
+    //alert('Preview called');
+    if(stateWrapper.answers.formtype.text == "Admission"){
+      $("#applicant_name").val(stateWrapper.answers.applicant_name.text);
+      $("#applicant_dob").val(stateWrapper.answers.applicant_dob.text);
+      $("#applicant_email").val(stateWrapper.answers.applicant_email.text);
+      $("#applicant_contact").val(stateWrapper.answers.applicant_contact.text);
+      $("#applicant_email").val(stateWrapper.answers.applicant_email.text);
+      $("#applicant_marks_1").val(stateWrapper.answers.applicant_marks_1.text);
+      $("#applicant_marks_2").val(stateWrapper.answers.applicant_marks_2.text);
+      $("#applicant_board").val(stateWrapper.answers.applicant_board.text);
+      $("#applicant_image").val(stateWrapper.answers.applicant_image.text);
+      $("#formName_application").show();
+    }
+    else{
+      $("#exam_name").val(stateWrapper.answers.exam_name.text);
+      $("#exam_email").val(stateWrapper.answers.exam_email.text);
+      $("#exam_contact").val(stateWrapper.answers.exam_contact.text);
+      $("#exam_course").val(stateWrapper.answers.exam_course.text);
+      $("#exam_section").val(stateWrapper.answers.exam_section.text);  
+      $("#exam_rollnumber").val(stateWrapper.answers.exam_rollnumber.text);  
+      $("#formName_exam").show();
+    }
+
+    $('#previewform').click();
+    //ready();
+  }
+
+  function Submit_Form(stateWrapper,ready) {
+    alert('Submit called');
+    //ready();
+  }
+
+  function Choose_Photo(stateWrapper,ready) {
+    //alert('Choose a Photo');
+   $("#Choose_PhotoButton").click();
+   ready();   
+  }
+
+  function Take_Photo(stateWrapper,ready) {
+    alert('Take a Photo');
+  }
+
+  function loadPhoto(event) {
+    var image = document.getElementById('applicant_image');
+	  image.src = URL.createObjectURL(event.target.files[0]);
+  }
+
+  function Login_Form(stateWrapper,ready){
+    $("#login_ModalButton").click();
+    chatCallback = ready;
+  }
+
+  $("#loginUserBtn").click(function () {
+    var user = $('#uID').val();
+    var pwd = $('#uPWD').val();
+    if(user == 'varun' && pwd == 'varun'){
+      chatCallback();
+    }
+  });
+
+  function Register_Form(stateWrapper,ready){
+    $("#register_ModalButton").click();
+    chatCallback = ready;
+  }
+
+  $("#registerUserBtn").click(function () {
+    var user = $('#register_uID').val();
+    var pwd = $('#register_uPWD').val();
+    var pwd2 = $('#register_uPWD2').val();
+
+    if(pwd != pwd2){
+      alert("Passwords do not match. Try again");
+      $("#register_ModalButton").click();
+    }else{
+      chatCallback();
+    }
+  });
+
+</script>
+
+</html>
